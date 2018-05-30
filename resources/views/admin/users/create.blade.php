@@ -19,10 +19,10 @@
          {!! Form::text('name',null, ['class'=>'form-control']) !!}<br>
          {!! Form::label('email address') !!}
          {!! Form::email('email',null, ['class'=>'form-control']) !!}<br>
-         {!! Form::label('Status') !!}
-         {!! Form::select('is_active',[1 =>'Active', 0 =>'Inactive' ],0, ['class'=>'form-control']) !!}<br>
+         {!! Form::label('is_active') !!}
+         {!! Form::select('is_active',[''=>'Choose Options', 1 =>'Active', 0 =>'Inactive' ],'', ['class'=>'form-control']) !!}<br>
          {!! Form::label('Role') !!}
-         {!! Form::select('role_id', [''=>'Choose Options'] + $roles, null, ['class'=>'form-control']) !!}<br>
+         {!! Form::select('role_id', [''=>'Choose Options'] + $roles, '',['class'=>'form-control']) !!}<br>
          {!! Form::file('file',null, ['class'=>'form-control']) !!}<br>
          {!! Form::label('password','Password') !!}<br>
          {!! Form::password('password', ['class'=>'form-control']) !!}<br>
