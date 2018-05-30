@@ -29,7 +29,7 @@ class UsersRequest extends Request
             'email' => 'required',
             'role_id' => 'required',
             'is_active' => 'required',
-            'file' => 'required',
+            'photo_id' => 'required',
             'password' => 'required'
         ];
     }

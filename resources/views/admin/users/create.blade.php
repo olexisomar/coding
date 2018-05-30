@@ -23,7 +23,7 @@
          {!! Form::select('is_active',[''=>'Choose Options', 1 =>'Active', 0 =>'Inactive' ],'', ['class'=>'form-control']) !!}<br>
          {!! Form::label('Role') !!}
          {!! Form::select('role_id', [''=>'Choose Options'] + $roles, '',['class'=>'form-control']) !!}<br>
-         {!! Form::file('file',null, ['class'=>'form-control']) !!}<br>
+         {!! Form::file('photo_id',null, ['class'=>'form-control']) !!}<br>
          {!! Form::label('password','Password') !!}<br>
          {!! Form::password('password', ['class'=>'form-control']) !!}<br>
          {!! Form::submit('Create User', ['class'=>'btn btn-primary']) !!}
