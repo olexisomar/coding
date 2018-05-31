@@ -13,6 +13,7 @@
 <thead>
   <tr>
     <th>Id</th>
+    <th>Photo</th>
     <th>Name</th>
     <th>Email</th>
     <th>Role</th>
@@ -29,17 +30,22 @@
 
   <tr>
     <td>{{$user->id}}</td>
-    <td>{{$user->name}}</td>
+    @if($user->photo)
+      <td><a href="{{route('users.edit',$user->id)}}"><img src="{{$user->photo->path}}" height="100px" width="100" alt="" class="img-circle"></a></td>
+     @else
+      <td><img src="http://via.placeholder.com/100x100" alt=""></td>
+    @endif
+    <td><strong>{{$user->name}}</strong></td>
     <td>{{$user->email}}</td>
     <td>{{$user->role->name}}</td>
       @if($user->is_active == 1)
-    <td>{{'Yes'}}</td>
+    <td>{{'Active'}}</td>
       @else
-    <td>{{'No'}}</td>
+    <td>{{'Not Active'}}</td>
       @endif
     <td>{{$user->created_at->diffForHumans()}}</td>
     <td>{{$user->updated_at->diffForHumans()}}</td>
-    <td><a class="btn btn-info btn-outline" href="#">{{'edit'}}</a></td>
+    <td><a class="btn btn-info btn-outline" href="{{route('users.edit',$user->id)}}">{{'edit'}}</a></td>
     <td><a class="btn btn-outline btn-danger" href="#">{{'delete'}}</a></td>
   </tr>
 
