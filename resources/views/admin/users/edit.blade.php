@@ -29,12 +29,18 @@
     {!! Form::file('photo_id',null, ['class'=>'form-control']) !!}<br>
     {!! Form::label('password','Password') !!}<br>
     {!! Form::password('password', ['class'=>'form-control']) !!}<br>
-    {!! Form::submit('Update User', ['class'=>'btn btn-primary']) !!}
+    {!! Form::submit('Update User', ['class'=>'btn btn-primary col-sm-6']) !!}
 
+    {!! Form::close() !!}
+    {!! Form::open(['method'=>'DELETE','action'=>['AdminUsersController@destroy', $user->id]]) !!}
+    {!! Form::submit('Delete User', ['class'=>'btn btn-danger col-sm-6']) !!}
     {!! Form::close() !!}
 </div>
 
-    </div><br>
+
+
+    </div>
+    <br>
 <div class="row">
     @include('includes/form_errors')
 </div>

@@ -7,6 +7,27 @@
 
 @section('content')
 
+{{--@if(Session::has('deleted_user'))--}}
+
+    {{--<p class="alert-danger" align="center">{{session('deleted_user')}}</p>--}}
+
+{{--@endif--}}
+
+<p class="alert-danger" align="center">{{Session::has('deleted_user') ? session('deleted_user') : false}}</p>
+
+{{--@if(Session::has('created_user'))--}}
+
+    {{--<p class="alert-danger" align="center">{{session('created_user')}}</p>--}}
+
+{{--@endif--}}
+<p class="alert-danger" align="center">{{Session::has('created_user') ? session('created_user') : false}}</p>
+{{--@if(Session::has('updated_user'))--}}
+
+    {{--<p class="alert-danger" align="center">{{session('updated_user')}}</p>--}}
+
+{{--@endif--}}
+<p class="alert-danger" align="center">{{Session::has('updated_user') ?  session('updated_user')  : false }}</p>
+
 <h1>Users</h1>
 
 <table class="table">
@@ -37,7 +58,11 @@
     @endif
     <td><strong>{{$user->name}}</strong></td>
     <td>{{$user->email}}</td>
+    @if($user->role)
     <td>{{$user->role->name}}</td>
+    @else
+      <td>{{'Admin'}}</td>
+    @endif
       @if($user->is_active == 1)
     <td>{{'Active'}}</td>
       @else
@@ -45,8 +70,12 @@
       @endif
     <td>{{$user->created_at->diffForHumans()}}</td>
     <td>{{$user->updated_at->diffForHumans()}}</td>
-    <td><a class="btn btn-info btn-outline" href="{{route('users.edit',$user->id)}}">{{'edit'}}</a></td>
-    <td><a class="btn btn-outline btn-danger" href="#">{{'delete'}}</a></td>
+    <td><a class="btn btn-info btn-outline res" href="{{route('users.edit',$user->id)}}">{{'edit'}}</a></td>
+    <td> {!! Form::close() !!}
+      {!! Form::open(['method'=>'DELETE','action'=>['AdminUsersController@destroy', $user->id]]) !!}
+      {!! Form::submit('Delete User', ['class'=>'btn btn-danger btn-outline']) !!}
+      {!! Form::close() !!}
+    </td>
   </tr>
 
 @endforeach
